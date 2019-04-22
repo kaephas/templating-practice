@@ -1,0 +1,42 @@
+<include href="header.html">
+<body>
+    <h1>{{ @header }}</h1>
+    <p>Temperature is: {{ @temp }} F</p>
+    <p>{{ round((@temp-32) * (5.0/9.0), 2) }} C</p>
+    <p>Circumference of circle with radius of {{@radius}}: {{ @radius * 2 * pi() }}</p>
+
+    <check if="{{ @temp <= 60 }}">
+        <true><p>It's warm.</p></true>
+        <false><p>I'ts not warm.</p></false>
+    </check>git
+
+
+    <h2>My Favorite fruits</h2>
+    <ul>
+    <repeat group="{{ @fruits }}" value="{{ @fruit }}">
+        <li>{{ @fruit }}</li>
+    </repeat>
+    </ul>
+
+    <h2>Bookmarks</h2>
+    <ul>
+        <repeat group="{{ @bookmarks }}" value="{{ @link }}">
+            <li><a href="{{ @link }}">{{ @link }}</a></li>
+        </repeat>
+    </ul>
+
+    <ul>
+        <repeat group="{{ @bookmarks2 }}"
+                key="{{ @key }}"
+                value="{{ @link }}">
+            <li>{{ @key }}: <a href="{{ @link }}">{{ @link }}</a></li>
+        </repeat>
+    </ul>
+
+    <h2>Desserts</h2>
+    <repeat group="{{ @desserts }}" key="{{ @key }}" value="{{ @dessert }}">
+        <input type="checkbox" value="{{ @key }}" id="{{ @key }}">
+        <label for="{{ @key }}">{{ @dessert }}</label><br>
+    </repeat>
+</body>
+</html>

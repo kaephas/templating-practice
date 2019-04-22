@@ -23,10 +23,31 @@ $f3 = Base:: instance();
 $f3 -> set('DEBUG', 3);
 
 //Define a default route (dating splash page)
-$f3->route('GET /', FUNCTION()
+$f3->route('GET /', function($f3)
 {
-    $view = new Template();
-    echo $view->render('views/home.html');
+    // set a f3 variable
+    $f3->set('title', 'Practicing with Templates');
+    $f3->set('header', 'Templates Practice');
+    $f3->set('temp', 67);
+    $f3->set('radius', 10);
+    $fruits = array('apple', 'banana', 'orange');
+    $f3->set('fruits', $fruits);
+    $bookmarks = array('https://www.google.com', 'https://www.facebook.com', 'https://www.instagram.com');
+    $f3->set('bookmarks', $bookmarks);
+
+    $bookmarks2 = array('Google'=>'https://www.google.com',
+                        'Facebook'=>'https://www.facebook.com',
+                        'Instagram'=>'https://www.instagram.com');
+    $f3->set('bookmarks2', $bookmarks2);
+
+    $desserts = array('chocolate' => 'Chocolate Mousse',
+                      'vanilla' => 'Vanilla Custard',
+                      'strawberry' => 'Strawberry Shortcake');
+    $f3->set('desserts', $desserts);
+
+//    $view = new Template();
+//    echo $view->render('views/info.html');
+    echo Template::instance()->render('views/info.html');
 });
 
 //run Fat-free
